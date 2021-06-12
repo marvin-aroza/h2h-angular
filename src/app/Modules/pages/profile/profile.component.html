@@ -1,0 +1,123 @@
+<!-- Illustrations -->
+<div class="card shadow mb-4" *ngIf="user">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">My Profile</h6>
+  </div>
+  <div class="card-body">
+    <div class="text-center profile-photo">
+      <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" [src]="env.apiUrl+user.profImage | defualtImage:user.profImage"
+        alt="...">
+        <input type="file" #fileUpload hidden (change)="profileImageUpload($event)">
+        <button class="btn" (click)="fileUpload.click();"><i class="fa fa-upload" style="cursor: pointer;"></i></button>
+    </div>
+       <!-- Content Row -->
+       <div class="row" *ngIf="formLoaded">
+
+        <form class="row" style="width: 100%;" [formGroup]="Form" (ngSubmit)="saveProfile()">
+          <!-- Border Left Utilities -->
+          <div class="col-lg-6">
+
+              <div class="card mb-4 py-3 border-left-primary edit-profile">
+                  <div class="card-body">
+                      <p [hidden]="firstnameField">{{user.firstname}}</p>
+                      <input type="text" class="form-control form-control-user" placeholder="First Name" formControlName="first_name" [hidden]="!firstnameField" (change)="valueChanged = true">
+                      <div *ngIf="isFormSubmitted && f.first_name.errors" class=""
+                          style="font-size: .7rem; color: red; position:absolute;">
+                        <div *ngIf="f.first_name.errors.required">*First Name is required</div>
+                      </div>
+                  </div>
+                  <i class="fa fa-pen" style="cursor: pointer;" (click)="enableFields('firstname')" [hidden]="firstnameField"></i>
+                  <i class="fa fa-times" style="cursor: pointer;" (click)="enableFields('')" [hidden]="!firstnameField"></i>
+              </div>
+
+              <div class="card mb-4 py-3 border-left-secondary edit-profile">
+                  <div class="card-body">
+                      <p [hidden]="usernameField">{{user.username}}</p>
+                      <input type="text" class="form-control form-control-user" placeholder="Username" formControlName="username" [hidden]="!usernameField" (change)="valueChanged = true">
+                      <div *ngIf="isFormSubmitted && f.username.errors" class=""
+                        style="font-size: .7rem; color: red; position:absolute;">
+                        <div *ngIf="f.username.errors.required">*Username is required</div>
+                      </div>
+                  </div>
+                  <i class="fa fa-pen" style="cursor: pointer;"  (click)="enableFields('username')"  [hidden]="usernameField"></i>
+                  <i class="fa fa-times" style="cursor: pointer;" (click)="enableFields('')"  [hidden]="!usernameField"></i>
+              </div>
+
+              <div class="card mb-4 py-3 border-left-success edit-profile">
+                  <div class="card-body">
+                      <p [hidden]="phoneField">{{user.phone}}</p>
+                      <input type="text" class="form-control form-control-user" placeholder="Phone" formControlName="phone" [hidden]="!phoneField" (change)="valueChanged = true">
+                      <div *ngIf="isFormSubmitted && f.phone.errors" class=""
+                        style="font-size: .7rem; color: red; position:absolute;">
+                        <div *ngIf="f.phone.errors.required">*Phone is required</div>
+                      </div>
+                  </div>
+                  <i class="fa fa-pen" style="cursor: pointer;" (click)="enableFields('phone')" [hidden]="phoneField"></i>
+                  <i class="fa fa-times" style="cursor: pointer;" (click)="enableFields('')" [hidden]="!phoneField"></i>
+              </div>
+
+
+
+          </div>
+
+          <!-- Border Bottom Utilities -->
+          <div class="col-lg-6">
+
+              <div class="card mb-4 py-3 border-bottom-primary edit-profile">
+                  <div class="card-body">
+                      <p [hidden]="lastnameField">{{user.lastname}}</p>
+                      <input type="text" class="form-control form-control-user" placeholder="Last name" formControlName="last_name" [hidden]="!lastnameField" (change)="valueChanged = true">
+                      <div *ngIf="isFormSubmitted && f.last_name.errors" class=""
+                        style="font-size: .7rem; color: red; position:absolute;">
+                        <div *ngIf="f.last_name.errors.required">*Last Name is required</div>
+                      </div>
+                  </div>
+                  <i class="fa fa-pen" style="cursor: pointer;" (click)="enableFields('lastname')" [hidden]="lastnameField"></i>
+                  <i class="fa fa-times" style="cursor: pointer;" (click)="enableFields('')" [hidden]="!lastnameField"></i>
+              </div>
+
+              <div class="card mb-4 py-3 border-bottom-secondary edit-profile">
+                  <div class="card-body">
+                      <p [hidden]="emailField">{{user.email}}</p>
+                      <input type="email" class="form-control form-control-user" placeholder="Email" formControlName="email" [hidden]="!emailField" (change)="valueChanged = true">
+                      <div *ngIf="isFormSubmitted && f.email.errors" class=""
+                        style="font-size: .7rem; color: red; position:absolute;">
+                        <div *ngIf="f.email.errors.required">*Email is required</div>
+                      </div>
+                      <div *ngIf="isFormSubmitted && f.email.errors" class=""
+                        style="font-size: .7rem; color: red; position:absolute;">
+                        <div *ngIf="f.email.errors.email">*Enter a valid email</div>
+                      </div>
+                    </div>
+                  <i class="fa fa-pen" style="cursor: pointer;" (click)="enableFields('email')" [hidden]="emailField"></i>
+                  <i class="fa fa-times" style="cursor: pointer;" (click)="enableFields('')" [hidden]="!emailField"></i>
+              </div>
+
+              <div class="card mb-4 py-3 border-bottom-success edit-profile">
+                  <div class="card-body">
+                      <p [hidden]="genderField">{{user.gender}}</p>
+                      <select class="form-control"
+                          placeholder="Username" formControlName="gender" [hidden]="!genderField" (change)="valueChanged = true">
+                          <option [value]="null" [selected]="user.gender == null">Select Gender</option>
+                          <option [value]="gender.Male" [selected]="user.gender == gender.Male">{{gender.Male}}</option>
+                          <option [value]="gender.Female" [selected]="user.gender == gender.Female">{{gender.Female}}</option>
+                          <option [value]="gender.Other" [selected]="user.gender == gender.Other">{{gender.Other}}</option>
+                        </select>
+                        <div *ngIf="isFormSubmitted && f.gender.errors" class=""
+                          style="font-size: .7rem; color: red; position:absolute;">
+                          <div *ngIf="f.gender.errors.required">*Gender is required</div>
+                        </div>
+                  </div>
+                  <i class="fa fa-pen" style="cursor: pointer;" (click)="enableFields('gender')" [hidden]="genderField"></i>
+                  <i class="fa fa-times" style="cursor: pointer;" (click)="enableFields('')" [hidden]="!genderField"></i>
+              </div>
+
+          </div>
+          <div class="row col-md-12" style="justify-content: center;" *ngIf="valueChanged">
+            <button class="btn btn-primary" type="submit" style="margin-right: 2%;"><i class="fa fa-check" style="margin-right: 2px;"></i>Save</button>
+            <button class="btn btn-danger" (click)="enableFields('')"><i class="fa fa-times" style="margin-right: 2px;"></i>Cancel</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>

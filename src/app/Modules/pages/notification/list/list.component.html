@@ -1,0 +1,52 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Notifications</h1>
+
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+      <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Notifications listing</h6>
+      </div>
+      <div class="card-body" *ngIf="notifList">
+          <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                      <tr>
+                          <th>Sl.no</th>
+                          <th>Title</th>
+                          <th>Subtitle</th>
+                          <th>Action</th>
+
+                      </tr>
+                  </thead>
+                  <tfoot>
+                      <tr>
+                        <th>Sl.no</th>
+                        <th>Title</th>
+                        <th>Subtitle</th>
+                        <th>Action</th>
+                      </tr>
+                  </tfoot>
+                  <tbody>
+                      <tr *ngFor="let notif of notifList;let i=index">
+                          <td>{{ i+1 }}</td>
+                          <td>{{ notif?.post[0]?.title}}</td>
+                          <td>{{ notif?.post[0]?.subtitle }}</td>
+                          <td>
+                            Work in Progress
+                            <!-- <button class="btn btn-primary  btn-circle btn-lg" type="button" [routerLink]="['/contact', notif._id]"><i class="fas fa-eye fa-sm"></i></button> -->
+                            <!-- <button class="btn btn-warning  btn-circle btn-lg" type="button" [routerLink]="['/user/update', contact._id]"><i class="fas fa-pen fa-sm"></i></button> -->
+                            <!-- <button class="btn btn-danger  btn-circle btn-lg" type="button" (click)="delete(notif._id)"><i class="fas fa-trash fa-sm"></i></button> -->
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+
+</div>
+<!-- /.container-fluid -->

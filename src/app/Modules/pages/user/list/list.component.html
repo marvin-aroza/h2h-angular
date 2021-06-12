@@ -1,0 +1,52 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Admins</h1>
+
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+      <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Admin listing</h6>
+      </div>
+      <div class="card-body" *ngIf="adminList">
+          <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                      <tr>
+                          <th>Sl.no</th>
+                          <th>Name</th>
+                          <th>Role</th>
+                          <th style="width: 25%;">Action</th>
+
+                      </tr>
+                  </thead>
+                  <tfoot>
+                      <tr>
+                        <th>Sl.no</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                      </tr>
+                  </tfoot>
+                  <tbody>
+                      <tr *ngFor="let admin of adminList;let i=index">
+                          <td>{{ i+1 }}</td>
+                          <td>{{ admin.firstname}}</td>
+                          <td>{{ admin.role }}</td>
+                          <td class="button-alignment">
+                            <button class="btn btn-primary btn-circle btn-lg" type="button" data-toggle="tooltip" data-placement="top" title="View" [routerLink]="['/user', admin._id]"><i class="fas fa-eye fa-sm"></i></button>
+                            <button class="btn btn-warning btn-circle btn-lg" type="button" data-toggle="tooltip" data-placement="top" title="Edit" [routerLink]="['/user/update', admin._id]"><i class="fas fa-pen fa-sm"></i></button>
+                            <button class="btn btn-danger btn-circle btn-lg" type="button" data-toggle="tooltip" data-placement="top" title="Delete" (click)="delete(admin._id)"><i class="fas fa-trash fa-sm"></i></button>
+                            <button class="btn btn-circle btn-lg" [ngClass]="{'btn-success': !admin.isActive, 'btn-danger': admin.isActive}" data-toggle="tooltip" data-placement="top" [title]="admin.isActive ? 'Mark inactive' : 'Mark active'" type="button" (click)="markInactive(admin._id, admin.isActive)"><i class="fas fa-check fa-sm" [ngClass]="{'fa-check': !admin.isActive, 'fa-times': admin.isActive}"></i></button>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+
+</div>
+<!-- /.container-fluid -->

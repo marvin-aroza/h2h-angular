@@ -1,0 +1,96 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">{{title}}</h1>
+
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row" *ngIf="isLoaded">
+                <div class="col-lg-12">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">{{subTitle}}</h1>
+                        </div>
+                        <form class="user" [formGroup]="form" (ngSubmit)="addAdmin()">
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user"
+                                        placeholder="First Name" formControlName="firstname">
+                                        <div class="error-span" *ngIf="isSubmitted && f.firstname.errors">
+                                          <div *ngIf="isSubmitted && f.firstname.errors.required">*First Name is required</div>
+                                        </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control form-control-user"
+                                        placeholder="Last Name" formControlName="lastname">
+                                        <div class="error-span" *ngIf="isSubmitted && f.lastname.errors">
+                                          <div *ngIf="isSubmitted && f.lastname.errors.required">*Last Name is required</div>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                              <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="email" class="form-control form-control-user"
+                                    placeholder="Email Address" formControlName="email">
+                                    <div class="error-span" *ngIf="isSubmitted && f.email.errors">
+                                      <div *ngIf="isSubmitted && f.email.errors.required">*Email is required</div>
+                                      <div *ngIf="isSubmitted && f.email.errors.email">*Email is not valid</div>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user"
+                                        placeholder="Username" formControlName="username">
+                                        <div class="error-span" *ngIf="isSubmitted && f.username.errors">
+                                          <div *ngIf="isSubmitted && f.username.errors.required">*Username is required</div>
+                                        </div>
+                                      </div>
+                            </div>
+                            <div class="form-group row">
+                              <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="email" class="form-control form-control-user"
+                                    placeholder="Phone number" formControlName="phone">
+                                    <div class="error-span" *ngIf="isSubmitted && f.phone.errors">
+                                      <div *ngIf="isSubmitted && f.phone.errors.required">*Phone is required</div>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <select class="form-control"
+                                        placeholder="Username" formControlName="gender">
+                                        <option [value]="null" [selected]="this.adminDetails.gender == null">Select Gender</option>
+                                        <option [value]="gender.Male" [selected]="this.adminDetails.gender == gender.Male">{{gender.Male}}</option>
+                                        <option [value]="gender.Female" [selected]="this.adminDetails.gender == gender.Female">{{gender.Female}}</option>
+                                        <option [value]="gender.Other" [selected]="this.adminDetails.gender == gender.Other">{{gender.Other}}</option>
+                                      </select>
+                                      <div class="error-span" *ngIf="isSubmitted && f.gender.errors">
+                                        <div *ngIf="isSubmitted && f.gender.errors.required">*Gender is required</div>
+                                      </div>
+                                      </div>
+                            </div>
+                            <div class="form-group row" *ngIf="!adminId">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="password" class="form-control form-control-user"
+                                         placeholder="Password" formControlName="password">
+                                         <div class="error-span" *ngIf="isSubmitted && f.password.errors">
+                                          <div *ngIf="isSubmitted && f.password.errors.required">*Password is required</div>
+                                        </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control form-control-user"
+                                         placeholder="Repeat Password" formControlName="confirm_password">
+                                         <div class="error-span" *ngIf="isSubmitted && f.confirm_password.errors">
+                                          <div *ngIf="isSubmitted && f.confirm_password.errors.required">*Confirm Password is required</div>
+                                        </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-user btn-block">
+                                {{buttonText}}
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
