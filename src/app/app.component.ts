@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+//services
+import { NgxUiLoaderDemoService } from 'src/app/shared/Services/ngx-ui-loader-demo.service'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'helping-hand-admin';
+
+  constructor(
+    public loaderService: NgxUiLoaderDemoService
+  ) {
+
+  }
 }

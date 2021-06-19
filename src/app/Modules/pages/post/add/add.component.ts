@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder,FormGroup,Validators } from '@angular/forms'
 import { PostService } from 'src/app/shared/Services/post.service'
+import { CategoryService } from 'src/app/shared/Services/category.service'
 import Swal from 'sweetalert2'
 import { AuthService } from 'src/app/shared/Services/auth.service'
 import {Router} from '@angular/router'
@@ -15,16 +16,32 @@ export class AddComponent implements OnInit {
   Form!:FormGroup
   isSubmitted=false;
   isLoaded=false;
+  iscategoryLoaded=false;
   imgFile:any = '';
-  constructor(private fb:FormBuilder,private postservice:PostService,private authservice:AuthService,private router:Router) { }
+  categoryList:any = []
+  constructor(
+    private fb:FormBuilder,private postservice:PostService,private authservice:AuthService,
+    private router:Router,private catservice:CategoryService) { }
 
   ngOnInit(): void {
+    this.getCategoryList();
     this.createAddPostForm()
+  }
+
+  getCategoryList(){
+    this.catservice.getCategory().subscribe(res=>{
+      if(res.status){
+        this.categoryList = res.data
+        console.log(' this.categoryList ', this.categoryList);
+        this.iscategoryLoaded=true
+      }
+    })
   }
 
   createAddPostForm(){
     this.Form = this.fb.group({
       title:['',Validators.required],
+      category:['',Validators.required],
       subtitle:[''],
       desc:[''],
       img:[''],
@@ -44,8 +61,10 @@ export class AddComponent implements OnInit {
       return
     } else {
 
+      console.log('this.fvalues.category.value ',this.fvalues.category.value);
       const formData:FormData = new FormData();
       formData.append("title",this.fvalues.title.value)
+      formData.append("category_id",this.fvalues.category.value)
       formData.append("subtitle",this.fvalues.subtitle.value)
       formData.append("description",this.fvalues.desc.value)
       formData.append("image",this.fvalues.img.value)

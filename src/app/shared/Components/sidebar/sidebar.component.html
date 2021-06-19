@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="height: 100% !important;">
 
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -70,6 +70,47 @@
         <h6 class="collapse-header">Manage Category:</h6>
         <a class="collapse-item"  [routerLink]="['/category/add']" routerLinkActive="active">Add</a>
         <a class="collapse-item"  [routerLink]="['/category']" routerLinkActive="active">List</a>
+      </div>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2"
+      aria-expanded="true" aria-controls="collapseUtilities">
+      <i class="fas fa-fw fa-wrench"></i>
+      <span>News</span>
+    </a>
+    <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Manage News:</h6>
+        <a class="collapse-item"  [routerLink]="['/news/add']" routerLinkActive="active">Add</a>
+        <a class="collapse-item"  [routerLink]="['/news']" routerLinkActive="active">List</a>
+      </div>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities3"
+      aria-expanded="true" aria-controls="collapseUtilities">
+      <i class="fas fa-fw fa-wrench"></i>
+      <span>Events</span>
+    </a>
+    <div id="collapseUtilities3" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Manage Event:</h6>
+        <a class="collapse-item"  [routerLink]="['/event/add']" routerLinkActive="active">Add</a>
+        <a class="collapse-item"  [routerLink]="['/event']" routerLinkActive="active">List</a>
+      </div>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities4"
+      aria-expanded="true" aria-controls="collapseUtilities">
+      <i class="fas fa-fw fa-wrench"></i>
+      <span>Donation</span>
+    </a>
+    <div id="collapseUtilities4" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Manage Request:</h6>
+        <a class="collapse-item"  [routerLink]="['/donate']" routerLinkActive="active">List</a>
       </div>
     </div>
   </li>

@@ -1,0 +1,5 @@
+.select-dropdown-div {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+}

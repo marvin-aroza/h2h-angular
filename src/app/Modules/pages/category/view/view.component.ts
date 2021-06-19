@@ -41,19 +41,26 @@ export class ViewComponent implements OnInit {
 
   //delete category
   delete(id:any) {
-    if(confirm("Are you sure want to delete?")) {
-      console.log(id);
-      this.categoryService.deleteCategory(id).subscribe(res => {
-        console.log(res);
-        if(res.status) {
-          this.handler(res);
-        } else {
-          this.handler(res);
+
+    Swal.fire({
+      icon:'warning',
+      title: "Are you sure? Do you want to delete the category?",
+      showConfirmButton: true,
+      showCancelButton: true
+    }).then((result) => {
+        if (result.value) {
+          this.categoryService.deleteCategory(id).subscribe(res => {
+            console.log(res);
+            if(res.status) {
+              this.handler(res);
+            } else {
+              this.handler(res);
+            }
+          });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            return
         }
-      });
-    } else {
-      console.log("no");
-    }
+    });
   }
 
   //common handler for add and update

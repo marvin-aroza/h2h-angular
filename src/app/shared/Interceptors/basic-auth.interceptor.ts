@@ -24,9 +24,7 @@ console.log(currentUser);
 
       request = request.clone({
           setHeaders: {
-              Authorization: `Bearer ${currentUser.token}`,
-              Accept: 'application/json',
-             'Content-type': 'application/json'
+              Authorization: `Bearer ${currentUser.token}`
           }
       });
     }

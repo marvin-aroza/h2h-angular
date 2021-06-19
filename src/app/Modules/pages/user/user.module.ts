@@ -9,6 +9,8 @@ import { AddComponent } from './add/add.component';
 import { ViewComponent } from './view/view.component';
 import { ListComponent } from './list/list.component';
 
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { ListComponent } from './list/list.component';
     CommonModule,
     UserRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class UserModule { }

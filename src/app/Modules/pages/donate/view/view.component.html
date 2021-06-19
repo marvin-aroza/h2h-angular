@@ -1,0 +1,52 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Donation Request Details</h1>
+
+  <!-- Dropdown Card Example -->
+  <div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">Donation Request Details</h6>
+      <div class="dropdown no-arrow">
+        <!-- <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+          </a> -->
+        <button class="btn btn-primary" (click)="confirm()">Confirm Donation request</button>
+      </div>
+    </div>
+    <!-- Card Body -->
+    <div class="card-body" *ngIf="donationDetail">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <tbody>
+          <tr>
+            <td>Donation Requested By:-</td>
+            <td>{{donationDetail?.user[0]?.firstname}} {{donationDetail?.user[0]?.lastname}}</td>
+          </tr>
+          <tr>
+            <td>Donation Request Details:-</td>
+            <td>
+              <div [innerHTML]="donationDetail.body"></div>
+            </td>
+          </tr>
+          <tr>
+            <td>Donation Details:-</td>
+            <td>
+              <div [innerHTML]="donationDetail.donation[0].body"></div>
+            </td>
+          </tr>
+          <tr *ngIf="donationDetail.image">
+            <td>Photo:-</td>
+            <td><img [src]="donationDetail.image | defualtImage:donationDetail.image" width="300"></td>
+          </tr>
+          <tr *ngIf="donationDetail.video">
+            <td>Video:-</td>
+            <td><img [src]="donationDetail.video | defualtImage:donationDetail.video" width="300"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

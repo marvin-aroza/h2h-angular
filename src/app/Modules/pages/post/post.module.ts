@@ -7,6 +7,9 @@ import { ViewComponent } from './view/view.component';
 import { ListComponent } from './list/list.component';
 
 import { FormsModule,ReactiveFormsModule } from '@angular/forms'
+import { CKEditorModule } from 'ckeditor4-angular';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 @NgModule({
   declarations: [
     AddComponent,
@@ -17,7 +20,9 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms'
     CommonModule,
     PostRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CKEditorModule,
+    NgxPaginationModule
   ]
 })
 export class PostModule { }

@@ -1,0 +1,54 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Events</h1>
+
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+      <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Event listing</h6>
+      </div>
+      <div class="select-dropdown-div">
+        <select class="form-control" style="width: 200px;" name="filters" (change)="changeFilter($event.target)">
+          <option value="Pending">Pending</option>
+          <option value="Completed">Completed</option>
+        </select>
+      </div>
+      <div class="card-body">
+          <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                      <tr>
+                          <th>Sl.no</th>
+                          <th>Title</th>
+                          <th>Host</th>
+                          <th style="width: 25%;">Action</th>
+
+                      </tr>
+                  </thead>
+                  <tbody *ngIf="isLoaded && postListData;else no_result">
+                      <tr *ngFor="let post of postListData | paginate: { itemsPerPage: 10, currentPage: p };let i=index">
+                          <td>{{ i+1 }}</td>
+                          <td>{{ post.title }}</td>
+                          <td>{{ post.host}}</td>
+                          <td class="button-alignment">
+                            <button class="btn btn-primary  btn-circle btn-lg" data-toggle="tooltip" data-placement="top" title="View" type="button" [routerLink]="['/event', post._id]"><i class="fas fa-eye fa-sm"></i></button>
+                            <button class="btn btn-warning  btn-circle btn-lg" data-toggle="tooltip" data-placement="top" title="Edit" type="button" [routerLink]="['/event/edit', post._id]"><i class="fas fa-pen fa-sm"></i></button>
+                            <button class="btn btn-danger  btn-circle btn-lg" data-toggle="tooltip" data-placement="top" title="Delete" type="button" (click)="delete(post._id)"><i class="fas fa-trash fa-sm"></i></button>
+                            <button *ngIf="post.status == 'Pending'" class="btn btn-success  btn-circle btn-lg" data-toggle="tooltip" data-placement="top" title="Mark Complete" type="button" (click)="markCompleteEvent(post._id)"><i class="fas fa-check fa-sm"></i></button>
+                          </td>
+                      </tr>
+                      <ng-template #no_result><tr><td colspan="4">No data found</td></tr></ng-template>
+                  </tbody>
+                  <div>
+                    <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
+                  </div>
+              </table>
+          </div>
+      </div>
+  </div>
+
+</div>
+<!-- /.container-fluid -->

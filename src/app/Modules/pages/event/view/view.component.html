@@ -1,0 +1,70 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Event Details</h1>
+
+<!-- Dropdown Card Example -->
+<div class="card shadow mb-4">
+  <!-- Card Header - Dropdown -->
+  <div
+      class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">Event Details</h6>
+      <div class="dropdown no-arrow">
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+              aria-labelledby="dropdownMenuLink" *ngIf="eventDetail">
+              <div class="dropdown-header" >Actions:</div>
+              <a class="dropdown-item" [routerLink]="['/event/edit', eventDetail._id]">Edit</a>
+              <a class="dropdown-item" (click)="delete(eventDetail._id)">Delete</a>
+          </div>
+      </div>
+  </div>
+  <!-- Card Body -->
+  <div class="card-body" *ngIf="eventDetail">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <tbody>
+          <tr>
+            <td>Title:-</td>
+            <td>{{eventDetail?.title}}</td>
+          </tr>
+          <tr>
+            <td>Host:-</td>
+            <td>{{eventDetail?.host}}</td>
+          </tr>
+          <tr>
+            <td>Place:-</td>
+            <td>{{eventDetail?.place}}</td>
+          </tr>
+          <tr>
+            <td>Address:-</td>
+            <td>{{eventDetail?.address}}</td>
+          </tr>
+          <tr>
+            <td>Start Time:-</td>
+            <td>{{eventDetail?.startTime}}</td>
+          </tr>
+          <tr>
+            <td>end Time:-</td>
+            <td>{{eventDetail?.endTime}}</td>
+          </tr>
+          <tr>
+            <td>Event Date:-</td>
+            <td>{{eventDetail?.eventDate}}</td>
+          </tr>
+          <tr *ngIf="eventDetail.image">
+            <td>Photo:-</td>
+            <td><img [src]="eventDetail.image | defualtImage:eventDetail.image" width="300"></td>
+          </tr>
+          <tr>
+            <td>Body:-</td>
+            <td><div [innerHTML]="eventDetail.body"></div></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</div>
+</div>

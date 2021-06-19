@@ -5,6 +5,9 @@ import { NotificationRoutingModule } from './notification-routing.module';
 import { ListComponent } from './list/list.component';
 import { ViewComponent } from './view/view.component';
 
+import {NgxPaginationModule} from 'ngx-pagination';
+
+
 
 @NgModule({
   declarations: [
@@ -13,7 +16,8 @@ import { ViewComponent } from './view/view.component';
   ],
   imports: [
     CommonModule,
-    NotificationRoutingModule
+    NotificationRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class NotificationModule { }

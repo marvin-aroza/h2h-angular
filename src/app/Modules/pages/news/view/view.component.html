@@ -1,0 +1,54 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">News Details</h1>
+
+<!-- Dropdown Card Example -->
+<div class="card shadow mb-4">
+  <!-- Card Header - Dropdown -->
+  <div
+      class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">News Details</h6>
+      <div class="dropdown no-arrow">
+          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+              aria-labelledby="dropdownMenuLink" *ngIf="newsDetail">
+              <div class="dropdown-header" >Actions:</div>
+              <a class="dropdown-item" [routerLink]="['/news/edit', newsDetail._id]">Edit</a>
+              <a class="dropdown-item" (click)="delete(newsDetail._id)">Delete</a>
+          </div>
+      </div>
+  </div>
+  <!-- Card Body -->
+  <div class="card-body" *ngIf="newsDetail">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <tbody>
+          <tr>
+            <td>Title:-</td>
+            <td>{{newsDetail?.title}}</td>
+          </tr>
+          <tr>
+            <td>Subtitle:-</td>
+            <td>{{newsDetail?.subtitle}}</td>
+          </tr>
+          <tr>
+            <td>Body:-</td>
+            <td><div [innerHTML]="newsDetail.body"></div></td>
+          </tr>
+          <tr *ngIf="newsDetail.image">
+            <td>Photo:-</td>
+            <td><img [src]="newsDetail.image | defualtImage:newsDetail.image" width="300"></td>
+          </tr>
+          <tr *ngIf="newsDetail.video">
+            <td>Video:-</td>
+            <td><img [src]="newsDetail.video | defualtImage:newsDetail.video" width="300"></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</div>
+</div>

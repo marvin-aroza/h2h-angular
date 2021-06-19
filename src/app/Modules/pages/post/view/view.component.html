@@ -1,15 +1,15 @@
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<!-- <div class="container-fluid">
 
-  <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+  Page Heading
+   <h1 class="h3 mb-2 text-gray-800">Tables</h1>
   <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
       For more information about DataTables, please visit the <a target="_blank"
           href="https://datatables.net">official DataTables documentation</a>.</p>
 
-<!-- Dropdown Card Example -->
+
 <div class="card shadow mb-4">
-  <!-- Card Header - Dropdown -->
+
   <div
       class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
       <h6 class="m-0 font-weight-bold text-primary">Dropdown Card Example</h6>
@@ -28,11 +28,58 @@
           </div>
       </div>
   </div>
-  <!-- Card Body -->
+
   <div class="card-body">
       Dropdown menus can be placed in the card header in order to extend the functionality
       of a basic card. In this dropdown card example, the Font Awesome vertical ellipsis
       icon in the card header can be clicked on in order to toggle a dropdown menu.
   </div>
 </div>
+<!-- </div> -->
+<div class="container-fluid mt-4 mb-4">
+  <div style="display: flex;justify-content: flex-end;">
+    <div class="mt-2 col-md-6 function-buttons" style="justify-content: space-evenly;">
+      <button class="btn btn-danger" value="reject" (click)="rejectPost()"><i class="fa fa-times" aria-hidden="true"></i>Reject Post</button>
+      <button class="btn btn-primary" value="accept" (click)="uploadPost()"><i class="fa fa-check" aria-hidden="true"></i>Upload Post</button>
+      <button class="btn btn-warning  btn-circle btn-lg" (click)="isEditClicked = true" data-toggle="tooltip" data-placement="top" title="Add Comments" type="button"><i class="fas fa-pen fa-sm"></i></button>
+    </div>
+  </div>
+  <div class="card post-card" *ngIf="isModalLoaded" style="max-height: 500px;">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h3>{{ postData?.title }}</h3>
+
+    </div>
+    <div class="card-body">
+      <h3>{{ postData?.subtitle }}</h3>
+      <table [cellPadding]="20">
+        <tr>
+          <td>Created By:-</td>
+          <td>{{postData.user[0].firstname}} {{postData.user[0].lastname}}</td>
+        </tr>
+        <tr>
+          <td>Created At:-</td>
+          <td>{{postData.createdAt}}</td>
+        </tr>
+        <tr>
+          <td>Admin Comments:-</td>
+          <td>{{postData.comments ? postData.comments : 'No comments yet'}}</td>
+        </tr>
+        <tr>
+          <td>Status:-</td>
+          <td><button class="btn" [ngClass]="{'btn-success' : postData.isActive, 'btn-danger': !postData.isActive}">{{postData.isActive}}</button></td>
+        </tr>
+      </table>
+      <img *ngIf="postData?.image" [src]="env.apiUrl+postData?.image" style="width: 100%;"/>
+      <video *ngIf="postData?.video" [src]="env.apiUrl+postData?.video"></video>
+      <div [innerHTML]="postData?.description"></div>
+    </div>
+
+  </div>
+  <div class="card post-card" *ngIf="isEditClicked" style="max-height: 500px;margin-top: 40px;">
+    <form class="form-group">
+      <label>Add comments</label>
+      <textarea class="form-control" #comment></textarea>
+      <button class="btn btn-primary" (click)="addCommentsToPost()">Add Comment</button>
+    </form>
+  </div>
 </div>

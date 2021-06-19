@@ -41,7 +41,7 @@ export class AddComponent implements OnInit {
       password: '',
       phone: '',
       gender: null,
-      role: 2
+      role: 'Admin'
   }
 
   constructor(

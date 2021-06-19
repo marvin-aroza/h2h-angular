@@ -56,8 +56,8 @@
                                     </div>
                                   </div>
                                   <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <select class="form-control"
-                                        placeholder="Username" formControlName="gender">
+                                    <select class="form-control select-design"
+                                        placeholder="Username" formControlName="gender" >
                                         <option [value]="null" [selected]="this.adminDetails.gender == null">Select Gender</option>
                                         <option [value]="gender.Male" [selected]="this.adminDetails.gender == gender.Male">{{gender.Male}}</option>
                                         <option [value]="gender.Female" [selected]="this.adminDetails.gender == gender.Female">{{gender.Female}}</option>

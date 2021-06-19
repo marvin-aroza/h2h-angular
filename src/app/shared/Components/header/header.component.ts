@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { from } from 'rxjs';
+import { Router } from '@angular/router'
 
 //environment
 import { environment} from 'src/environments/environment'
@@ -8,12 +9,14 @@ import { environment} from 'src/environments/environment'
 import { NotificationService } from 'src/app/shared/Services/notification.service'
 import { ContactService } from 'src/app/shared/Services/contact.service'
 import { AuthService } from 'src/app/shared/Services/auth.service'
+import { ModalService } from 'src/app/shared/Services/modal.service'
+import { MatDialog } from '@angular/material/dialog'
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit,AfterViewInit {
 
   //Variables
   notifCount:any;
@@ -27,7 +30,10 @@ export class HeaderComponent implements OnInit {
   constructor(
     private notifService: NotificationService,
     private contactService: ContactService,
-    private authService: AuthService
+    private authService: AuthService,
+    private dialog:MatDialog,
+    private modalservice:ModalService,
+    private router: Router
   ) {
     this.getUsrDetails();
   }
@@ -37,6 +43,12 @@ export class HeaderComponent implements OnInit {
     this.getNotificationList();
     this.getContactCount();
     this.getContactList();
+  }
+
+  ngAfterViewInit(){
+    setInterval( ()=>{
+     this.ngOnInit();
+    }, 5000)
   }
 
   //get Notification count
@@ -82,6 +94,13 @@ export class HeaderComponent implements OnInit {
        console.log(res);
       this.userDetail = res;
      });
+  }
+
+  showPostOnModal(id:any){
+    this.router.navigate(['/post'], { state: { example: 'bar' } }).then(() => {
+      console.log("check id",id);
+      this.modalservice.viewPost(id);
+    })
   }
 
 }

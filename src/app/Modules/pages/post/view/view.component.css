@@ -1,0 +1,12 @@
+.function-buttons{
+  display:flex;
+  direction:rtl;
+  justify-content: end;
+}
+
+.card-body {
+  margin: 10px !important;
+  outline: 1px solid #CCC !important;
+  height: auto !important;
+  overflow: auto !important;
+}

@@ -21,15 +21,8 @@
 
                       </tr>
                   </thead>
-                  <tfoot>
-                      <tr>
-                        <th>Sl.no</th>
-                        <th>Name</th>
-                        <th>Action</th>
-                      </tr>
-                  </tfoot>
                   <tbody>
-                      <tr *ngFor="let cat of categoryList;let i=index">
+                      <tr *ngFor="let cat of categoryList | paginate: { itemsPerPage: 10, currentPage: p };let i=index">
                           <td>{{ i+1 }}</td>
                           <td>{{ cat.name}}</td>
                           <td class="button-alignment">
@@ -39,6 +32,9 @@
                           </td>
                       </tr>
                   </tbody>
+                  <div>
+                    <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
+                  </div>
               </table>
           </div>
       </div>

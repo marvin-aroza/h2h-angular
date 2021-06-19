@@ -9,6 +9,9 @@ import { AddComponent } from './add/add.component';
 import { ListComponent } from './list/list.component';
 import { ViewComponent } from './view/view.component';
 
+import {NgxPaginationModule} from 'ngx-pagination';
+
+
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { ViewComponent } from './view/view.component';
     CommonModule,
     CategoryRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class CategoryModule { }

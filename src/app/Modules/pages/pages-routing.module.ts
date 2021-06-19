@@ -34,6 +34,21 @@ const routes: Routes = [
     loadChildren: () => import(`./profile/profile.module`).then(m => m.ProfileModule)
   },
   {
+    path: 'news',
+    canActivate: [AuthGuardGuard],
+    loadChildren: () => import(`./news/news.module`).then(m => m.NewsModule)
+  },
+  {
+    path: 'event',
+    canActivate: [AuthGuardGuard],
+    loadChildren: () => import(`./event/event.module`).then(m => m.EventModule)
+  },
+  {
+    path: 'donate',
+    canActivate: [AuthGuardGuard],
+    loadChildren: () => import(`./donate/donate.module`).then(m => m.DonateModule)
+  },
+  {
     path: '',
     canActivate: [AuthGuardGuard],
     loadChildren: () => import(`./home/home.module`).then(m => m.HomeModule)

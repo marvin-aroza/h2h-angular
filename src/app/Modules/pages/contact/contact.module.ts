@@ -4,6 +4,9 @@ import { ContactRoutingModule } from './contact-routing.module'
 import { ListComponent } from './list/list.component';
 import { ViewComponent } from './view/view.component';
 
+import {NgxPaginationModule} from 'ngx-pagination';
+
+
 
 
 @NgModule({
@@ -13,7 +16,8 @@ import { ViewComponent } from './view/view.component';
   ],
   imports: [
     CommonModule,
-    ContactRoutingModule
+    ContactRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class ContactModule { }

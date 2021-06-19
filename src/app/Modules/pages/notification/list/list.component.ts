@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 //services
 import { NotificationService } from 'src/app/shared/Services/notification.service'
+import { ModalService } from 'src/app/shared/Services/modal.service'
 
 //Material import for modal
 import Swal from 'sweetalert2'
@@ -21,7 +22,8 @@ export class ListComponent implements OnInit {
 
   constructor(
     private notificationService: NotificationService,
-    public router: Router
+    public router: Router,
+    private modalservice:ModalService
   ) {
     this.getContactList();
   }
@@ -35,6 +37,13 @@ export class ListComponent implements OnInit {
       console.log(res);
       this.notifList = res.data;
     });
+  }
+
+  showPostOnModal(id:any){
+    this.router.navigate(['/post'], { state: { example: 'bar' } }).then(() => {
+      console.log("check id",id);
+      this.modalservice.viewPost(id);
+    })
   }
 
 }
