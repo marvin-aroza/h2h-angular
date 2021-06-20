@@ -18,6 +18,9 @@ export class AddComponent implements OnInit {
   isSubmitted=false;
   isLoaded=false;
   imgFile:any = '';
+  imgName:any
+  videoName:any
+
   constructor(private fb:FormBuilder,private newsService:NewsService,private authservice:AuthService,private router:Router) { }
 
   ngOnInit(): void {
@@ -79,7 +82,7 @@ export class AddComponent implements OnInit {
 
   onImgFileChange(event:any){
     if (event.target.files.length > 0) {
-
+      this.imgName = event.target.files[0].name
       const file = event.target.files[0];
       this.Form.get('img')!.setValue(file);
 
@@ -89,7 +92,7 @@ export class AddComponent implements OnInit {
 
   onVideoFileChange(event:any){
     if (event.target.files.length > 0) {
-
+      this.videoName = event.target.files[0].name
       const file = event.target.files[0];
 
       this.Form.get('video')!.setValue(file);

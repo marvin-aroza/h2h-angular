@@ -44,7 +44,7 @@
       <button class="btn btn-warning  btn-circle btn-lg" (click)="isEditClicked = true" data-toggle="tooltip" data-placement="top" title="Add Comments" type="button"><i class="fas fa-pen fa-sm"></i></button>
     </div>
   </div>
-  <div class="card post-card" *ngIf="isModalLoaded" style="max-height: 500px;">
+  <div class="card post-card" *ngIf="isModalLoaded && postData" style="max-height: 500px;">
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
       <h3>{{ postData?.title }}</h3>
 
@@ -54,7 +54,7 @@
       <table [cellPadding]="20">
         <tr>
           <td>Created By:-</td>
-          <td>{{postData.user[0].firstname}} {{postData.user[0].lastname}}</td>
+          <td>{{postData.user[0]?.firstname}} {{postData.user[0]?.lastname}}</td>
         </tr>
         <tr>
           <td>Created At:-</td>

@@ -34,14 +34,26 @@
                               <div class="col-sm-6 mb-3 mb-sm-0">
                                 <input type="file" class="custom-file-input" id="customFile" multiple="" (change)="onImgFileChange($event)"/>
                                 <label class="btn btn-primary" style="cursor: pointer;" for="customFile"><i _ngcontent-bgs-c48="" class="fas fa-upload fa-sm" style="margin-right: 5px;"></i>Click here to add Image</label>
-                              <!-- <label>Image</label>
+                                <div>
+                                  <p>{{imgName}}</p>
+                                </div>
+                                <div>
+                                  <img [src]="newsDetail.image | defualtImage:newsDetail.image" width="150"/>
+                                </div>
+                                <!-- <label>Image</label>
                               <input type="file" class="form-control form-control-user"
                                   placeholder="Add image" (change)="onImgFileChange($event)"> -->
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                              <input type="file" class="custom-file-input" id="customFile" multiple="" (change)="onVideoFileChange($event)"/>
-                                <label class="btn btn-primary" style="cursor: pointer;" for="customFile"><i _ngcontent-bgs-c48="" class="fas fa-upload fa-sm" style="margin-right: 5px;"></i>Click here to add Video</label>
-                              <!-- <label>Video</label>
+                              <input type="file" class="custom-file-input" id="customFile1" multiple="" (change)="onVideoFileChange($event)"/>
+                                <label class="btn btn-primary" style="cursor: pointer;" for="customFile1"><i _ngcontent-bgs-c48="" class="fas fa-upload fa-sm" style="margin-right: 5px;"></i>Click here to add Video</label>
+                                <div>
+                                  <p>{{videoName}}</p>
+                                </div>
+                                <div>
+                                  <img [src]="newsDetail.video | defualtImage:newsDetail.video" width="150"/>
+                                </div>
+                                <!-- <label>Video</label>
                               <input type="file" class="form-control form-control-user"
                                   placeholder="Add video" (change)="onVideoFileChange($event)"> -->
                             </div>

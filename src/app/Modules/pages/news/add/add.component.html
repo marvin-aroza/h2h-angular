@@ -44,10 +44,16 @@
                               <div class="col-sm-6 mb-3 mb-sm-0">
                                 <input type="file" class="custom-file-input" id="customFile" multiple="" (change)="onImgFileChange($event)"/>
                                 <label class="btn btn-primary" style="cursor: pointer;" for="customFile"><i _ngcontent-bgs-c48="" class="fas fa-upload fa-sm" style="margin-right: 5px;"></i>Click here to add Image</label>
+                                <div>
+                                  <p>{{imgName}}</p>
+                                </div>
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                              <input type="file" class="custom-file-input" id="customFile" multiple="" (change)="onVideoFileChange($event)"/>
-                                <label class="btn btn-primary" style="cursor: pointer;" for="customFile"><i _ngcontent-bgs-c48="" class="fas fa-upload fa-sm" style="margin-right: 5px;"></i>Click here to add Video</label>
+                              <input type="file" class="custom-file-input" id="customFile1" multiple="" (change)="onVideoFileChange($event)"/>
+                                <label class="btn btn-primary" style="cursor: pointer;" for="customFile1"><i _ngcontent-bgs-c48="" class="fas fa-upload fa-sm" style="margin-right: 5px;"></i>Click here to add Video</label>
+                                <div>
+                                  <p>{{videoName}}</p>
+                                </div>
                             </div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-user btn-block">

@@ -19,6 +19,7 @@ export class EditComponent implements OnInit {
   imgFile:any = '';
   eventId = this.route.snapshot.params.id //gets id from url
   eventDetail:any
+  imgName:any
   constructor(private fb:FormBuilder,
     private eventService:EventsService,
     private authservice:AuthService,
@@ -99,7 +100,7 @@ export class EditComponent implements OnInit {
 
   onImgFileChange(event:any){
     if (event.target.files.length > 0) {
-
+      this.imgName = event.target.files[0].name
       const file = event.target.files[0];
       this.Form.get('img')!.setValue(file);
 

@@ -19,6 +19,8 @@ export class EditComponent implements OnInit {
   imgFile: any = '';
   newsId:any  = this.route.snapshot.params.id
   newsDetail:any
+  imgName:any
+  videoName:any
 
   constructor(
     private fb: FormBuilder,
@@ -92,8 +94,9 @@ export class EditComponent implements OnInit {
   }
 
   onImgFileChange(event: any) {
+    console.log("image");
     if (event.target.files.length > 0) {
-
+      this.imgName = event.target.files[0].name
       const file = event.target.files[0];
       this.Form.get('img')!.setValue(file);
 
@@ -102,8 +105,9 @@ export class EditComponent implements OnInit {
   }
 
   onVideoFileChange(event: any) {
+    console.log("video");
     if (event.target.files.length > 0) {
-
+      this.videoName = event.target.files[0].name
       const file = event.target.files[0];
 
       this.Form.get('video')!.setValue(file);

@@ -36,7 +36,7 @@
                           <td>{{ i+1 }}</td>
                           <td>{{ post.title }}</td>
                           <td>{{ post?.firstname[0]?.firstname}}</td>
-                          <td>category</td>
+                          <td>{{ post?.category[0].name}}</td>
                           <td class="button-alignment">
                             <button class="btn btn-primary  btn-circle btn-lg" data-toggle="tooltip" data-placement="top" title="View" type="button" data-id="post._id" (click)="showPostOnModal(post._id)"><i class="fas fa-eye fa-sm"></i></button>
 
@@ -45,10 +45,10 @@
                       </tr>
                       <ng-template #no_result><tr><td colspan="4">No data found</td></tr></ng-template>
                   </tbody>
-                  <div>
-                    <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
-                  </div>
               </table>
+              <div>
+                <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
+              </div>
           </div>
       </div>
   </div>

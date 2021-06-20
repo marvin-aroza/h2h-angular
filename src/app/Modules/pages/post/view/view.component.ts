@@ -37,13 +37,14 @@ export class ViewComponent implements OnInit {
   }
 
   getPostDetailById(id:any){
-    this.isModalLoaded=true;
+
 
     //console.log('id in view component',id)
     if(id){
       this.postservice.getPostById(id).subscribe(result=>{
         if(result.status){
           this.postData = result.data[0];
+          this.isModalLoaded=true;
         }
       })
     }

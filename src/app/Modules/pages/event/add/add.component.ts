@@ -17,6 +17,7 @@ export class AddComponent implements OnInit {
   isSubmitted=false;
   isLoaded=false;
   imgFile:any = '';
+  imgName:any
   constructor(private fb:FormBuilder,private eventService:EventsService,private authservice:AuthService,private router:Router) { }
 
   ngOnInit(): void {
@@ -86,7 +87,7 @@ export class AddComponent implements OnInit {
 
   onImgFileChange(event:any){
     if (event.target.files.length > 0) {
-
+      this.imgName = event.target.files[0].name
       const file = event.target.files[0];
       this.Form.get('img')!.setValue(file);
 

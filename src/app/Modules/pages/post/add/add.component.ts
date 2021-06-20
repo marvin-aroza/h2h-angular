@@ -19,6 +19,9 @@ export class AddComponent implements OnInit {
   iscategoryLoaded=false;
   imgFile:any = '';
   categoryList:any = []
+  imgName:any
+  videoName:any
+
   constructor(
     private fb:FormBuilder,private postservice:PostService,private authservice:AuthService,
     private router:Router,private catservice:CategoryService) { }
@@ -100,7 +103,7 @@ export class AddComponent implements OnInit {
 
   onImgFileChange(event:any){
     if (event.target.files.length > 0) {
-
+      this.imgName = event.target.files[0].name;
       const file = event.target.files[0];
       this.Form.get('img')!.setValue(file);
 
@@ -110,7 +113,7 @@ export class AddComponent implements OnInit {
 
   onVideoFileChange(event:any){
     if (event.target.files.length > 0) {
-
+      this.videoName = event.target.files[0].name;
       const file = event.target.files[0];
 
       this.Form.get('video')!.setValue(file);
