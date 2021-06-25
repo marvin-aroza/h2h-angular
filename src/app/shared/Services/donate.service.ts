@@ -69,4 +69,42 @@ export class DonateService {
       return result;
     }));
   }
+
+  //Generic function to get donate list by category
+  getDonateList(catId:any) {
+    let headers: HttpHeaders = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers = headers.append('Accept', 'application/json');
+    return this.http.get<any>(`${environment.apiUrl}donate/admin-list/with-filter/listing/${catId}`, {
+      headers: headers
+    })
+    .pipe(map((result: any) => {
+        return result;
+    }));
+  }
+
+  getDonatebyId(donateId:any) {
+    console.log(donateId);
+    let headers: HttpHeaders = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers = headers.append('Accept', 'application/json');
+    return this.http.get<any>(`${environment.apiUrl}donate/detail/${donateId}`, {
+      headers: headers
+    })
+    .pipe(map((result: any) => {
+        return result;
+    }));
+  }
+
+  updateDonationStatus(id:any) {
+    let headers: HttpHeaders = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers = headers.append('Accept', 'application/json');
+    return this.http.patch<any>(`${environment.apiUrl}donate/update-status/${id}`, {}, {
+      headers: headers
+    })
+    .pipe(map((result: any) => {
+        return result;
+    }));
+  }
 }

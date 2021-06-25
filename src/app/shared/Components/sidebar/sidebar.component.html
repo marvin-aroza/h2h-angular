@@ -102,15 +102,69 @@
     </div>
   </li>
   <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities7"
+      aria-expanded="true" aria-controls="collapseUtilities">
+      <i class="fas fa-fw fa-wrench"></i>
+      <span>Forum</span>
+    </a>
+    <div id="collapseUtilities7" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Manage Forum:</h6>
+        <a class="collapse-item"  [routerLink]="['/forum']" routerLinkActive="active">List</a>
+      </div>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities8"
+      aria-expanded="true" aria-controls="collapseUtilities">
+      <i class="fas fa-fw fa-wrench"></i>
+      <span>Donations</span>
+    </a>
+    <div id="collapseUtilities8" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Manage Donations:</h6>
+        <a class="collapse-item"  [routerLink]="['/donation']" routerLinkActive="active">List</a>
+      </div>
+    </div>
+  </li>
+  <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities4"
       aria-expanded="true" aria-controls="collapseUtilities">
       <i class="fas fa-fw fa-wrench"></i>
-      <span>Donation</span>
+      <span>Donation Requests</span>
     </a>
     <div id="collapseUtilities4" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Manage Request:</h6>
         <a class="collapse-item"  [routerLink]="['/donate']" routerLinkActive="active">List</a>
+      </div>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities5"
+      aria-expanded="true" aria-controls="collapseUtilities">
+      <i class="fas fa-fw fa-wrench"></i>
+      <span>Newsletter</span>
+    </a>
+    <div id="collapseUtilities5" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Manage Newsletter:</h6>
+        <a class="collapse-item"  [routerLink]="['/newsletter/add']" routerLinkActive="active">Add</a>
+        <a class="collapse-item"  [routerLink]="['/newsletter']" routerLinkActive="active">List</a>
+      </div>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities6"
+      aria-expanded="true" aria-controls="collapseUtilities">
+      <i class="fas fa-fw fa-wrench"></i>
+      <span>Images</span>
+    </a>
+    <div id="collapseUtilities6" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Manage Images:</h6>
+        <!-- <a class="collapse-item"  [routerLink]="['/newsletter/add']" routerLinkActive="active">Add</a> -->
+        <a class="collapse-item"  [routerLink]="['/images']" routerLinkActive="active">List</a>
       </div>
     </div>
   </li>

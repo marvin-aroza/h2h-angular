@@ -2,50 +2,37 @@
 <div class="container-fluid">
 
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Contact Details</h1>
+  <h1 class="h3 mb-2 text-gray-800">Newsletter Details</h1>
 
 <!-- Dropdown Card Example -->
 <div class="card shadow mb-4">
   <!-- Card Header - Dropdown -->
   <div
       class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-      <h6 class="m-0 font-weight-bold text-primary">Contact Details</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Newsletter Details</h6>
       <div class="dropdown no-arrow">
           <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-              aria-labelledby="dropdownMenuLink" *ngIf="contactDetail">
+              aria-labelledby="dropdownMenuLink" *ngIf="newsletterDetail">
               <div class="dropdown-header" >Actions:</div>
-              <a class="dropdown-item" (click)="replyButton=true">Reply</a>
-              <a class="dropdown-item" (click)="delete(contactDetail._id)">Delete</a>
+              <a class="dropdown-item" [routerLink]="['/newsletter/edit', newsletterDetail._id]">Edit</a>
+              <a class="dropdown-item" (click)="delete(newsletterDetail._id)">Delete</a>
           </div>
       </div>
   </div>
   <!-- Card Body -->
-  <div class="card-body" *ngIf="contactDetail">
+  <div class="card-body" *ngIf="newsletterDetail">
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <tbody>
           <tr>
-            <td>Name:-</td>
-            <td>{{contactDetail?.name}}</td>
-          </tr>
-          <tr>
-            <td>Email:-</td>
-            <td>{{contactDetail?.email}}</td>
-          </tr>
-          <tr>
-            <td>Message:-</td>
-            <td>{{contactDetail?.message}}</td>
+            <td>Body:-</td>
+            <td><div [innerHTML]="newsletterDetail.body"></div></td>
           </tr>
         </tbody>
       </table>
-      <div class="card-body" *ngIf="replyButton">
-        <label>Reply</label>
-        <textarea #reply class="form-control"></textarea>
-        <button class="btn btn-primary" (click)="replyFunc()">Reply</button>
-      </div>
   </div>
 </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 //required imports
 import { Router, ActivatedRoute } from '@angular/router'
@@ -19,6 +19,8 @@ export class ViewComponent implements OnInit {
   //variables
   contactId = this.route.snapshot.params.id //gets id from url
   contactDetail:any
+  replyButton = false
+  @ViewChild("reply") response!: ElementRef;
 
   constructor(
     public route:ActivatedRoute,
@@ -62,6 +64,20 @@ export class ViewComponent implements OnInit {
     } else {
       console.log("no");
     }
+  }
+
+  replyFunc() {
+    let formdata = {
+      response : this.response.nativeElement.value
+    }
+    this.contactService.reply(this.contactId, formdata).subscribe(res => {
+      console.log(res);
+      if(res.status) {
+        this.handler(res);
+      } else {
+        this.handler(res);
+      }
+    });
   }
 
    //common handler for add and update

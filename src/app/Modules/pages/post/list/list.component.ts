@@ -43,4 +43,9 @@ export class ListComponent implements OnInit {
       this.modalservice.viewPost(id);
     }
   }
+
+  changeFilter(event:any) {
+    this.filter = event.value;
+    this.postList();
+  }
 }

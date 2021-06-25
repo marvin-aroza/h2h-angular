@@ -49,6 +49,26 @@ const routes: Routes = [
     loadChildren: () => import(`./donate/donate.module`).then(m => m.DonateModule)
   },
   {
+    path: 'newsletter',
+    canActivate: [AuthGuardGuard],
+    loadChildren: () => import(`./newsletter/newsletter.module`).then(m => m.NewsletterModule)
+  },
+  {
+    path: 'images',
+    canActivate: [AuthGuardGuard],
+    loadChildren: () => import(`./images/images.module`).then(m => m.ImagesModule)
+  },
+  {
+    path: 'forum',
+    canActivate: [AuthGuardGuard],
+    loadChildren: () => import(`./forum/forum.module`).then(m => m.ForumModule)
+  },
+  {
+    path: 'donation',
+    canActivate: [AuthGuardGuard],
+    loadChildren: () => import(`./donation-forum/donation-forum.module`).then(m => m.DonationForumModule)
+  },
+  {
     path: '',
     canActivate: [AuthGuardGuard],
     loadChildren: () => import(`./home/home.module`).then(m => m.HomeModule)

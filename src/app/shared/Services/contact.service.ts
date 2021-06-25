@@ -70,6 +70,19 @@ export class ContactService {
     }));
   }
 
+  // contact reply
+  reply(id:any, formData:any) {
+    let headers: HttpHeaders = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers = headers.append('Accept', 'application/json');
+    return this.http.patch<any>(`${environment.apiUrl}contact/reply/${id}`, formData, {
+      headers: headers
+    })
+    .pipe(map((result: any) => {
+      return result;
+    }));
+  }
+
   //get contact notification delete by id
   getContactDelete(id:any) {
     let headers: HttpHeaders = new HttpHeaders();

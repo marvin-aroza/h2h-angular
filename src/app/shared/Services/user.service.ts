@@ -19,11 +19,11 @@ export class UserService {
   ) { }
 
   //get user list
-  getUsers() {
+  getUsers(filter:any = null) {
     let headers: HttpHeaders = new HttpHeaders();
     // headers.append('Content-Type', 'application/json');
     // headers = headers.append('Accept', 'application/json');
-    return this.http.get<any>(`${environment.apiUrl}user`, {
+    return this.http.get<any>(`${environment.apiUrl}user?filter=${filter}`, {
       headers: headers
     })
     .pipe(map((result: any) => {

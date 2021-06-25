@@ -19,6 +19,7 @@ export class ListComponent implements OnInit {
   //variables
   adminList: any
   p:number=1
+  filter:any = null
 
   constructor(
     private userService: UserService,
@@ -32,10 +33,15 @@ export class ListComponent implements OnInit {
 
   //get admin listing
   getAdmins() {
-    this.userService.getUsers().subscribe(res => {
+    this.userService.getUsers(this.filter).subscribe(res => {
       console.log(res);
       this.adminList = res.data
     });
+  }
+
+  changeFilter(event:any) {
+    this.filter = event.value
+    this.getAdmins();
   }
 
   //delete user

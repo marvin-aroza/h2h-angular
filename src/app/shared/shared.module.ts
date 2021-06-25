@@ -11,6 +11,7 @@ import { LoopLimiterPipe } from './Pipes/loop-limiter.pipe';
 import { NotificationNumberLimiterPipe } from './Pipes/notification-number-limiter.pipe';
 import { ErrorComponent } from './Components/error/error.component';
 import { DefualtImagePipe } from './Pipes/defualt-image.pipe';
+import { StringCheckerPipe } from './Pipes/string-checker.pipe';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { DefualtImagePipe } from './Pipes/defualt-image.pipe';
     LoopLimiterPipe,
     NotificationNumberLimiterPipe,
     ErrorComponent,
-    DefualtImagePipe
+    DefualtImagePipe,
+    StringCheckerPipe
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ import { DefualtImagePipe } from './Pipes/defualt-image.pipe';
     HeaderComponent,
     LoopLimiterPipe,
     NotificationNumberLimiterPipe,
-    DefualtImagePipe
+    DefualtImagePipe,
+    StringCheckerPipe
   ]
 })
 export class SharedModule { }

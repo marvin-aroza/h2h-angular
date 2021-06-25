@@ -1,0 +1,48 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">News</h1>
+
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+      <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">News listing</h6>
+      </div>
+      <div class="card-body">
+          <div class="table-responsive">
+            <button class="btn btn-primary" (click)="download()">Download All</button>
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                      <tr>
+                          <th>Sl.no</th>
+                          <th>Image</th>
+                          <th style="width: 25%;">Action</th>
+
+                      </tr>
+                  </thead>
+                  <tbody *ngIf="isLoaded && imageList;else no_result">
+                      <tr *ngFor="let image of imageList | paginate: { itemsPerPage: 10, currentPage: p };let i=index">
+                          <td>{{ i+1 }}</td>
+                          <td>
+                            <img [src]="image.path | defualtImage:image.path" width="200">
+                          </td>
+                          <td class="button-alignment">
+                            <a [href]="url+image.path" [download]="image.name" class="btn btn-primary  btn-circle btn-lg" data-toggle="tooltip" data-placement="top" title="download" type="button"><i class="fas fa-download fa-sm"></i></a>
+                            <!-- <button class="btn btn-warning  btn-circle btn-lg" data-toggle="tooltip" data-placement="top" title="Edit" type="button" [routerLink]="['/news/edit', post._id]"><i class="fas fa-pen fa-sm"></i></button>
+                            <button class="btn btn-danger  btn-circle btn-lg" data-toggle="tooltip" data-placement="top" title="Delete" type="button" (click)="delete(post._id)"><i class="fas fa-trash fa-sm"></i></button> -->
+                          </td>
+                      </tr>
+                      <ng-template #no_result><tr><td colspan="4">No data found</td></tr></ng-template>
+                  </tbody>
+              </table>
+              <div>
+                <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+<!-- /.container-fluid -->
