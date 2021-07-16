@@ -78,4 +78,13 @@ export class PostService {
       return result;
     }))
   }
+
+  makePopular(postId:any, body:any) {
+    let headers = this.getheaders();
+
+    return this.httpclient.patch<any>(`${environment.apiUrl}popular-post/`+postId, body,
+    {headers:headers}).pipe(map((result:any)=>{
+      return result;
+    }))
+  }
 }

@@ -50,7 +50,8 @@
                           <td class="button-alignment">
                             <button class="btn btn-primary  btn-circle btn-lg" data-toggle="tooltip" data-placement="top" title="View" type="button" data-id="post._id" (click)="showPostOnModal(post._id)"><i class="fas fa-eye fa-sm"></i></button>
 
-                            <!-- <button class="btn btn-danger  btn-circle btn-lg" data-toggle="tooltip" data-placement="top" title="Delete" type="button"><i class="fas fa-trash fa-sm"></i></button> -->
+                            <button *ngIf="!post?.isPopular" class="btn btn-success  btn-circle btn-lg" data-toggle="tooltip" data-placement="top" title="Popular" type="button" (click)="makePopular(post._id, true)"><i class="fas fa-check fa-sm"></i></button>
+                            <button *ngIf="post?.isPopular" class="btn btn-danger  btn-circle btn-lg" data-toggle="tooltip" data-placement="top" title="Popular" type="button" (click)="makePopular(post._id, false)"><i class="fas fa-times fa-sm"></i></button>
                           </td>
                       </tr>
                       <ng-template #no_result><tr><td colspan="4">No data found</td></tr></ng-template>

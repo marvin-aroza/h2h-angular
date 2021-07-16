@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog'
 import { PostService } from 'src/app/shared/Services/post.service'
 import { ModalService } from '../../../../shared/Services/modal.service'
+
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -47,5 +49,32 @@ export class ListComponent implements OnInit {
   changeFilter(event:any) {
     this.filter = event.value;
     this.postList();
+  }
+
+  makePopular(postId:any, status:Boolean) {
+    let body = {
+      status: status
+    }
+    this.postservice.makePopular(postId, body).subscribe(result => {
+      console.log(result);
+      if(result.status){
+        // window.location.reload();
+        Swal.fire({
+          icon: 'success',
+          title: result.message,
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          window.location.reload();
+        });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Something went wrong!',
+          showConfirmButton: false,
+          timer: 3000
+        });
+      }
+    });
   }
 }
