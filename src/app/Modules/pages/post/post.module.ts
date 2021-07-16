@@ -9,12 +9,14 @@ import { ListComponent } from './list/list.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms'
 import { CKEditorModule } from 'ckeditor4-angular';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ViewRedirectComponent } from './view-redirect/view-redirect.component';
 
 @NgModule({
   declarations: [
     AddComponent,
     ViewComponent,
-    ListComponent
+    ListComponent,
+    ViewRedirectComponent
   ],
   imports: [
     CommonModule,

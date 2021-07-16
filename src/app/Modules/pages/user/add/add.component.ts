@@ -70,25 +70,53 @@ export class AddComponent implements OnInit {
   //Create form instance
   createForm() {
     //inside this this.adminDeatils will display the value if it is for admin edit.. incase of add it will be empty as adminDetails in assigned empty
-    this.form = this.fb.group({
-      firstname: [this.adminDetails.firstname, Validators.required],
-      lastname: [this.adminDetails.lastname, Validators.required],
-      username: [this.adminDetails.username, Validators.required],
-      email: [this.adminDetails.email, Validators.required],
-      phone: [this.adminDetails.phone, Validators.required],
-      gender: [this.adminDetails.gender, Validators.required],
-      role: [this.adminDetails.role, Validators.required]
-    }
+    // this.form = this.fb.group({
+    //   firstname: [this.adminDetails.firstname, Validators.required],
+    //   lastname: [this.adminDetails.lastname, Validators.required],
+    //   username: [this.adminDetails.username, Validators.required],
+    //   email: [this.adminDetails.email, Validators.required],
+    //   phone: [this.adminDetails.phone, Validators.required],
+    //   gender: [this.adminDetails.gender, Validators.required],
+    //   role: [this.adminDetails.role, Validators.required]
+    // }
     // ,{
     //   validator: MustMatch('password', 'confirm_password')
     // }
-    )
+    // )
 
     //If the form is for adding a admin then password and confirm password are need. And it can be pushed to form group using this logic
-    if(!this.adminId) {
-      this.form.addControl('password', new FormControl('',[Validators.required]));
-      this.form.addControl('confirm_password', new FormControl('',[Validators.required]));
+    // if(!this.adminId) {
+    //   this.form.addControl('password', new FormControl('',[Validators.required]));
+    //   this.form.addControl('confirm_password', new FormControl('',[Validators.required]));
       // this.form.setValidators(MustMatch('password', 'confirm_password'));
+    // }
+
+    if(!this.adminId) {
+      this.form = this.fb.group({
+        firstname: ['', Validators.required],
+        lastname: ['', Validators.required],
+        username: ['', Validators.required],
+        email: ['', Validators.required],
+        phone: ['', Validators.required],
+        gender: ['', Validators.required],
+        role: ['', Validators.required],
+        password: ['', Validators.required],
+        confirm_password: ['', Validators.required],
+      }
+      ,{
+        validator: MustMatch('password', 'confirm_password')
+      }
+      )
+    } else {
+      this.form = this.fb.group({
+        firstname: [this.adminDetails.firstname, Validators.required],
+        lastname: [this.adminDetails.lastname, Validators.required],
+        username: [this.adminDetails.username, Validators.required],
+        email: [this.adminDetails.email, Validators.required],
+        phone: [this.adminDetails.phone, Validators.required],
+        gender: [this.adminDetails.gender, Validators.required],
+        role: [this.adminDetails.role, Validators.required]
+      });
     }
     this.isLoaded = true;
   }

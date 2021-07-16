@@ -43,4 +43,17 @@ export class NotificationService {
       return result;
     }));
   }
+
+  //update notification to read'
+  readNotification(id:any) {
+    let headers: HttpHeaders = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers = headers.append('Accept', 'application/json');
+    return this.http.patch<any>(`${environment.apiUrl}notification/${id}`, {}, {
+      headers: headers
+    })
+    .pipe(map((result: any) => {
+      return result;
+    }));
+  }
 }

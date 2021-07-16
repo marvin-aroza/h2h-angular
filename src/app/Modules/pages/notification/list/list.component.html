@@ -37,7 +37,7 @@
                           <td>{{ notif?.post[0]?.subtitle }}</td>
                           <td>
                             <!-- Work in Progress -->
-                            <button class="btn btn-primary  btn-circle btn-lg" type="button" (click)="showPostOnModal(notif.postId)"><i class="fas fa-eye fa-sm"></i></button>
+                            <button class="btn btn-primary  btn-circle btn-lg" type="button" (click)="showPostOnModal(notif.postId, notif._id)"><i class="fas fa-eye fa-sm"></i></button>
                             <!-- <button class="btn btn-warning  btn-circle btn-lg" type="button" [routerLink]="['/user/update', contact._id]"><i class="fas fa-pen fa-sm"></i></button> -->
                             <!-- <button class="btn btn-danger  btn-circle btn-lg" type="button" (click)="delete(notif._id)"><i class="fas fa-trash fa-sm"></i></button> -->
                           </td>

@@ -39,11 +39,14 @@ export class ListComponent implements OnInit {
     });
   }
 
-  showPostOnModal(id:any){
-    this.router.navigate(['/post'], { state: { example: 'bar' } }).then(() => {
-      console.log("check id",id);
-      this.modalservice.viewPost(id);
-    })
+  showPostOnModal(postid:any,id:any){
+    this.notificationService.readNotification(id).subscribe(res => {
+      console.log(res);
+      this.router.navigate(['/post'], { state: { example: 'bar' } }).then(() => {
+        console.log("check id",postid);
+        this.modalservice.viewPost(postid);
+      })
+    });
   }
 
 }

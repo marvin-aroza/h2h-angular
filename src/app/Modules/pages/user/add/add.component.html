@@ -81,6 +81,7 @@
                                          placeholder="Repeat Password" formControlName="confirm_password">
                                          <div class="error-span" *ngIf="isSubmitted && f.confirm_password.errors">
                                           <div *ngIf="isSubmitted && f.confirm_password.errors.required">*Confirm Password is required</div>
+                                          <div *ngIf="isSubmitted && f.confirm_password.errors.mustMatch">*Password doesnt match</div>
                                         </div>
                                 </div>
                             </div>

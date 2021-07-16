@@ -1,3 +1,4 @@
+import { ViewRedirectComponent } from './view-redirect/view-redirect.component';
 import { ViewComponent } from './view/view.component';
 import { AddComponent } from './add/add.component';
 import { ListComponent } from './list/list.component';
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'view',
     component: ViewComponent
+  },
+  {
+    path: 'post-view/:id',
+    component: ViewRedirectComponent
   },
   {
     path: '',

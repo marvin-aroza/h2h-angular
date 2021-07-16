@@ -96,11 +96,15 @@ export class HeaderComponent implements OnInit,AfterViewInit {
      });
   }
 
-  showPostOnModal(id:any){
-    this.router.navigate(['/post'], { state: { example: 'bar' } }).then(() => {
-      console.log("check id",id);
-      this.modalservice.viewPost(id);
-    })
+  showPostOnModal(postid:any, id:any){
+    this.notifService.readNotification(id).subscribe(res => {
+      console.log(res);
+      this.router.navigate(['/post'], { state: { example: 'bar' } }).then(() => {
+        console.log("check id",postid);
+        this.modalservice.viewPost(postid);
+      })
+    });
+
   }
 
 }
