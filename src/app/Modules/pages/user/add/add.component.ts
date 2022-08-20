@@ -99,7 +99,7 @@ export class AddComponent implements OnInit {
         email: ['', Validators.required],
         phone: ['', Validators.required],
         gender: ['', Validators.required],
-        role: ['', Validators.required],
+        role: ['Admin', Validators.required],
         password: ['', Validators.required],
         confirm_password: ['', Validators.required],
       }
